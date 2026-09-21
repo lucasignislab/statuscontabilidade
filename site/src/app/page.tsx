@@ -209,7 +209,7 @@ export default function Home() {
                 Enviar uma mensagem
               </Link>
             </div>
-            <p className="mt-8 text-sm text-ink/70">
+            <p className="mt-8 text-sm font-bold text-ink">
               {site.phone1} · {site.phone2}
             </p>
           </Reveal>
