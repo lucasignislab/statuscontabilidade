@@ -14,6 +14,9 @@ export default function Footer() {
             <p className="mt-4 text-sm text-mist/70 leading-relaxed max-w-xs">
               Há {site.years} anos cuidando da contabilidade de empresas de Campinas e região.
             </p>
+            <Link href="/privacidade" className="mt-3 inline-block text-xs text-mist/50 hover:text-mist transition-colors">
+              Política de privacidade
+            </Link>
           </div>
 
           <nav aria-label="Serviços no rodapé">
@@ -50,9 +53,9 @@ export default function Footer() {
         <hr className="my-10 border-white/10" />
         <div className="flex flex-col sm:flex-row justify-between gap-3 text-xs text-mist/50">
           <p>© {new Date().getFullYear()} <span className="text-status-300 font-semibold">Status</span> Contabilidade. Todos os direitos reservados.</p>
-          <Link href="/privacidade" className="hover:text-mist transition-colors">
-            Política de privacidade
-          </Link>
+          <a href="https://lucascoelhoux.site" target="_blank" rel="noopener noreferrer" className="hover:text-mist transition-colors">
+            Designed by Lucas Coelho
+          </a>
         </div>
       </div>
     </footer>
