@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, MapPin } from "lucide-react";
-import HeroCanvas from "@/components/HeroCanvas";
 import ServiceBands from "@/components/ServiceBands";
 import {
   CountUp,
@@ -15,46 +14,51 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative pt-[72px] overflow-hidden">
-        <HeroCanvas />
-        <div className="relative mx-auto max-w-[1200px] px-6 lg:px-12 py-20 lg:py-28 grid lg:grid-cols-2 gap-14 lg:items-start items-center">
-          <div>
-            <SplitHeadline
-              text="Cuidamos da sua contabilidade para você cuidar do seu negócio."
-              accent="negócio"
-              className="text-[clamp(2.5rem,5.5vw,4.25rem)] text-ink"
-            />
-            <Reveal delay={0.5}>
-              <p className="mt-6 text-xl text-slate max-w-[52ch] leading-relaxed">
-                Há {site.years} anos em Barão Geraldo, a <span className="text-status-red font-semibold">Status</span> Contabilidade atende
-                empresas de Campinas e região com uma equipe que conhece cada cliente
-                pelo nome.
-              </p>
-            </Reveal>
-            <Reveal delay={0.65}>
-              <div className="mt-9 flex flex-wrap gap-4">
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  Falar com um contador
-                  <ArrowRight size={18} aria-hidden />
-                </a>
-                <Link href="/servicos/abertura-de-empresas" className="btn-secondary">
-                  Quero abrir minha empresa
-                </Link>
-              </div>
-            </Reveal>
-            <Reveal delay={0.8}>
-              <p className="mt-8 flex items-center gap-2 text-sm text-slate">
-                <MapPin size={16} className="text-status-red" aria-hidden />
-                {site.address}
-              </p>
-            </Reveal>
-          </div>
-
-          <ImageReveal
-            src="/images/equipe-contadores.jpg"
-            alt="Equipe da Status Contabilidade reunida em parceria sobre relatórios financeiros"
-            className="rounded-2xl shadow-lg aspect-[3/4] max-h-[560px] w-full"
+      <section className="relative overflow-hidden bg-ink pt-[72px]">
+        <img
+          src="/images/equipe-contadores.jpg"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/75 to-ink/35"
+          aria-hidden
+        />
+        <div className="relative mx-auto max-w-[1200px] px-6 lg:px-12 py-24 lg:py-36">
+          <SplitHeadline
+            text="Cuidamos da sua contabilidade para você cuidar do seu negócio."
+            accent="negócio"
+            accentClass="italic text-red-100"
+            className="text-[clamp(2.5rem,5.5vw,4.25rem)] text-white max-w-[20ch]"
           />
+          <Reveal delay={0.5}>
+            <p className="mt-6 text-xl text-mist/80 max-w-[56ch] leading-relaxed">
+              Há {site.years} anos em Barão Geraldo, a <span className="text-red-100 font-semibold">Status</span> Contabilidade atende
+              empresas de Campinas e região com uma equipe que conhece cada cliente
+              pelo nome.
+            </p>
+          </Reveal>
+          <Reveal delay={0.65}>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                Falar com um contador
+                <ArrowRight size={18} aria-hidden />
+              </a>
+              <Link
+                href="/servicos/abertura-de-empresas"
+                className="inline-flex items-center gap-2 rounded-full border-[1.5px] border-white/60 px-8 py-4 text-[0.95rem] font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
+              >
+                Quero abrir minha empresa
+              </Link>
+            </div>
+          </Reveal>
+          <Reveal delay={0.8}>
+            <p className="mt-8 flex items-center gap-2 text-sm text-mist/70">
+              <MapPin size={16} className="text-red-100" aria-hidden />
+              {site.address}
+            </p>
+          </Reveal>
         </div>
       </section>
 

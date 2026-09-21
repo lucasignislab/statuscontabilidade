@@ -87,11 +87,13 @@ export function SplitHeadline({
   text,
   accent,
   className = "",
+  accentClass = "italic text-status-red",
   as: Tag = "h1",
 }: {
   text: string;
   accent?: string;
   className?: string;
+  accentClass?: string;
   as?: "h1" | "h2";
 }) {
   const ref = useRef<HTMLHeadingElement>(null);
@@ -122,7 +124,7 @@ export function SplitHeadline({
       {order.map((w, i) => (
         <span key={i} className="split-wrap">
           <span
-            className={`split-inner ${w.isAccent ? "italic text-status-red" : ""}`}
+            className={`split-inner ${w.isAccent ? accentClass : ""}`}
             style={w.isAccent ? { fontFamily: "var(--font-display)" } : undefined}
           >
             {w.word}
