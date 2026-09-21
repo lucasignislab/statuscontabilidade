@@ -10,48 +10,60 @@ export const metadata: Metadata = {
 
 /* ---------------- dados ---------------- */
 
+const GRADES = ["050","100","200","300","400","500","600","700","800","900","950"] as const;
+
 const families = [
   {
     name: "Status Red",
+    cssVar: "status",
     role: "Marca · ações primárias",
-    desc: "O vermelho do logotipo, estendido para o digital. CTAs, destaques de texto, chips de ícone e estados ativos.",
-    swatches: [
-      { grade: "50", hex: "#FDF0F1", token: "red-50", text: "text-ink" },
-      { grade: "100", hex: "#FADCE0", token: "red-100", text: "text-ink" },
-      { grade: "500", hex: "#C00518", token: "status-red", anchor: true, text: "text-white" },
-      { grade: "600", hex: "#BA2B25", token: "status-red-deep", text: "text-white" },
-      { grade: "700", hex: "#8F0412", token: "red-700", text: "text-white" },
-    ],
+    anchor: "600",
+    desc: "O vermelho do logotipo, estendido para o digital. CTAs, destaques de texto, chips de ícone e estados ativos. Escala derivada em OKLCH a partir da âncora #C00518.",
+    hex: {
+      "050": "#FFF0ED", "100": "#FFE0DC", "200": "#FFBAB0", "300": "#FC958B",
+      "400": "#E26960", "500": "#CA3D38", "600": "#C00518", "700": "#950006",
+      "800": "#710000", "900": "#4F0000", "950": "#2D0000",
+    } as Record<string, string>,
+    inUse: { "050": "red-50", "100": "red-100", "600": "status-red", "700": "red-700" } as Record<string, string>,
   },
   {
     name: "Ink",
+    cssVar: "ink",
     role: "Texto · superfícies escuras",
-    desc: "Azul-petróleo profundo no lugar do preto puro. Títulos, texto principal, footer e overlays de imagem.",
-    swatches: [
-      { grade: "500", hex: "#313B48", token: "ink", anchor: true, text: "text-white" },
-      { grade: "400", hex: "#46536A", token: "ink-700", text: "text-white" },
-      { grade: "300", hex: "#555555", token: "slate", text: "text-white" },
-    ],
+    anchor: "800",
+    desc: "Azul-petróleo profundo no lugar do preto puro. Títulos, texto principal, footer e overlays de imagem. Âncora #313B48 no grau 800.",
+    hex: {
+      "050": "#F5F6F7", "100": "#E9E9EB", "200": "#D0D3D6", "300": "#B2B6BC",
+      "400": "#8F949C", "500": "#707780", "600": "#58606A", "700": "#434D58",
+      "800": "#313B48", "900": "#1B232E", "950": "#090F17",
+    } as Record<string, string>,
+    inUse: { "700": "ink-700", "800": "ink" } as Record<string, string>,
   },
   {
     name: "Ocean",
+    cssVar: "ocean",
     role: "Suporte · links",
-    desc: "Azul de apoio herdado do site antigo, agora com papel único: links em texto corrido e contextos informativos.",
-    swatches: [
-      { grade: "50", hex: "#EBF1F8", token: "ocean-50", text: "text-ink" },
-      { grade: "600", hex: "#0A6AB5", token: "ocean-600", text: "text-white" },
-      { grade: "700", hex: "#08508C", token: "ocean", anchor: true, text: "text-white" },
-    ],
+    anchor: "600",
+    desc: "Azul de apoio herdado do site antigo, com papel único: links em texto corrido e contextos informativos. Âncora #08508C no grau 600.",
+    hex: {
+      "050": "#EFF7FF", "100": "#DFEBF9", "200": "#B8D6F7", "300": "#94BAE3",
+      "400": "#6A98C8", "500": "#4479B0", "600": "#08508C", "700": "#174E81",
+      "800": "#0A3862", "900": "#012444", "950": "#000E25",
+    } as Record<string, string>,
+    inUse: { "050": "ocean-50", "500": "ocean-600", "600": "ocean" } as Record<string, string>,
   },
   {
-    name: "Neutros",
+    name: "Neutral",
+    cssVar: "neutral",
     role: "Superfícies · divisórias",
-    desc: "Papel branco, névoa quase imperceptível para alternar seções e uma linha fina que estrutura sem poluir.",
-    swatches: [
-      { grade: "paper", hex: "#FFFFFF", token: "paper", anchor: true, text: "text-ink" },
-      { grade: "mist", hex: "#F9F9F9", token: "mist", text: "text-ink" },
-      { grade: "line", hex: "#E4E4E4", token: "line", text: "text-ink" },
-    ],
+    anchor: "050",
+    desc: "Papel, névoa e linha. Escala quente e sem croma que estrutura o layout sem poluir. Âncora #F9F9F9 (mist) no grau 050; o branco puro (paper) fica acima da escala, reservado ao fundo principal.",
+    hex: {
+      "050": "#F9F9F9", "100": "#E9E9E9", "200": "#D2D2D2", "300": "#B6B6B6",
+      "400": "#949494", "500": "#767676", "600": "#5F5F5F", "700": "#4C4C4C",
+      "800": "#373737", "900": "#232323", "950": "#0E0E0E",
+    } as Record<string, string>,
+    inUse: { "050": "mist", "100": "line", "600": "slate" } as Record<string, string>,
   },
 ];
 
@@ -202,7 +214,7 @@ export default function DesignSystemPage() {
           <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-4">
             {[
               ["4", "famílias de cor"],
-              ["16", "tokens de cor em uso"],
+              ["44", "tons em escala (4 × 11)"],
               ["15", "color roles semânticos"],
               ["6", "componentes documentados"],
             ].map(([n, label]) => (
@@ -281,32 +293,45 @@ export default function DesignSystemPage() {
             id="cor"
             index="01 · Cor"
             title="Famílias de cor"
-            desc="Fonte da verdade: @theme em globals.css. Quatro famílias, dezesseis tokens. O marcador indica a cor-âncora de cada família."
+            desc="Fonte da verdade: @theme em globals.css. Quatro famílias com 11 tons cada (050–950), derivadas matematicamente em OKLCH a partir das cores-âncora. O marcador vermelho indica a âncora; a etiqueta indica o token legado em uso no site."
           />
           {families.map((f) => (
             <div key={f.name}>
               <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
                 <h3 className="text-2xl text-ink">{f.name}</h3>
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-red-700">{f.role}</p>
+                <p className="text-xs font-mono text-slate">anchor · {f.anchor}</p>
               </div>
               <p className="mt-2 text-slate max-w-[68ch] text-[0.95rem]">{f.desc}</p>
-              <div className={`mt-6 grid gap-4 ${f.swatches.length > 3 ? "sm:grid-cols-3 lg:grid-cols-5" : "sm:grid-cols-3"}`}>
-                {f.swatches.map((s) => (
-                  <div key={s.token} className="card-service overflow-hidden !rounded-2xl hover:!transform-none">
-                    <div className={`relative h-20 flex items-end p-3 ${s.text}`} style={{ background: s.hex, border: s.hex === "#FFFFFF" || s.hex === "#F9F9F9" || s.hex === "#E4E4E4" ? "1px solid var(--color-line)" : undefined }}>
-                      <span className="text-xs font-bold">{s.hex}</span>
-                      {s.anchor && (
-                        <span className="absolute top-2 right-2 rounded-full bg-status-red px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-white">
-                          âncora
-                        </span>
-                      )}
+              <p className="mt-1 text-xs font-mono text-slate">Variáveis CSS: --color-{f.cssVar}-{"{grau}"}</p>
+              <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+                {GRADES.map((g) => {
+                  const hex = f.hex[g];
+                  const isAnchor = g === f.anchor;
+                  const lightText = ["600","700","800","900","950"].includes(g);
+                  const needsBorder = ["050","100","200"].includes(g);
+                  return (
+                    <div key={g} className="card-service overflow-hidden !rounded-2xl hover:!transform-none">
+                      <div
+                        className={`relative h-16 flex items-end p-2.5 ${lightText ? "text-white" : "text-ink"}`}
+                        style={{ background: hex, border: needsBorder ? "1px solid var(--color-line)" : undefined }}
+                      >
+                        <span className="text-[0.7rem] font-bold">{hex}</span>
+                        {isAnchor && (
+                          <span className="absolute top-2 right-2 rounded-full bg-status-red px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-white">
+                            âncora
+                          </span>
+                        )}
+                      </div>
+                      <div className="p-2.5">
+                        <p className="text-xs font-bold text-ink">{g}</p>
+                        {f.inUse[g] && (
+                          <p className="mt-0.5 text-[0.65rem] font-mono text-status-red">em uso · {f.inUse[g]}</p>
+                        )}
+                      </div>
                     </div>
-                    <div className="p-3">
-                      <p className="text-sm font-bold text-ink">{f.name} {s.grade}</p>
-                      <p className="text-[0.7rem] font-mono text-slate mt-0.5">--color-{s.token}</p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}

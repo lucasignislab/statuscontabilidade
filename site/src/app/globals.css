@@ -16,6 +16,55 @@
   --color-line: #E4E4E4;
   --color-slate: #555555;
 
+  /* Escalas completas (050–950), derivadas em OKLCH das cores-âncora */
+  --color-status-050: #FFF0ED;
+  --color-status-100: #FFE0DC;
+  --color-status-200: #FFBAB0;
+  --color-status-300: #FC958B;
+  --color-status-400: #E26960;
+  --color-status-500: #CA3D38;
+  --color-status-600: #C00518;
+  --color-status-700: #950006;
+  --color-status-800: #710000;
+  --color-status-900: #4F0000;
+  --color-status-950: #2D0000;
+
+  --color-ink-050: #F5F6F7;
+  --color-ink-100: #E9E9EB;
+  --color-ink-200: #D0D3D6;
+  --color-ink-300: #B2B6BC;
+  --color-ink-400: #8F949C;
+  --color-ink-500: #707780;
+  --color-ink-600: #58606A;
+  --color-ink-700: #434D58;
+  --color-ink-800: #313B48;
+  --color-ink-900: #1B232E;
+  --color-ink-950: #090F17;
+
+  --color-ocean-050: #EFF7FF;
+  --color-ocean-100: #DFEBF9;
+  --color-ocean-200: #B8D6F7;
+  --color-ocean-300: #94BAE3;
+  --color-ocean-400: #6A98C8;
+  --color-ocean-500: #4479B0;
+  --color-ocean-600: #08508C;
+  --color-ocean-700: #174E81;
+  --color-ocean-800: #0A3862;
+  --color-ocean-900: #012444;
+  --color-ocean-950: #000E25;
+
+  --color-neutral-050: #F9F9F9;
+  --color-neutral-100: #E9E9E9;
+  --color-neutral-200: #D2D2D2;
+  --color-neutral-300: #B6B6B6;
+  --color-neutral-400: #949494;
+  --color-neutral-500: #767676;
+  --color-neutral-600: #5F5F5F;
+  --color-neutral-700: #4C4C4C;
+  --color-neutral-800: #373737;
+  --color-neutral-900: #232323;
+  --color-neutral-950: #0E0E0E;
+
   --font-display: "Lora", Georgia, serif;
   --font-sans: "Open Sans", system-ui, sans-serif;
 
