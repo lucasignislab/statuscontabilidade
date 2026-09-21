@@ -68,6 +68,9 @@ export default function Header() {
           <Link href="/contato" className="text-ink font-semibold text-[0.95rem] hover:text-status-red transition-colors">
             Contato
           </Link>
+          <Link href="/design-system" className="text-ink font-semibold text-[0.95rem] hover:text-status-red transition-colors">
+            Design System
+          </Link>
           <Link href="/contato" className="btn-secondary !py-2.5 !px-6 text-sm">
             Fale conosco
           </Link>
@@ -104,6 +107,9 @@ export default function Header() {
           </Link>
           <Link href="/contato" onClick={() => setOpen(false)} className="block py-3 font-semibold text-ink">
             Contato
+          </Link>
+          <Link href="/design-system" onClick={() => setOpen(false)} className="block py-3 font-semibold text-ink">
+            Design System
           </Link>
           <Link href="/contato" onClick={() => setOpen(false)} className="btn-primary mt-3 w-full justify-center">
             Fale conosco
