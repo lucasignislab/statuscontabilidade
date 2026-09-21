@@ -210,7 +210,9 @@ export default function Home() {
               </Link>
             </div>
             <p className="mt-8 text-sm font-bold text-ink">
-              {site.phone1} · {site.phone2}
+              <a href="tel:+551932897123" className="hover:text-status-red transition-colors">{site.phone1}</a>
+              {" · "}
+              <a href="tel:+551932895673" className="hover:text-status-red transition-colors">{site.phone2}</a>
             </p>
           </Reveal>
         </div>

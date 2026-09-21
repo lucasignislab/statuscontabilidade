@@ -41,7 +41,11 @@ export default function Footer() {
               </li>
               <li className="flex gap-3">
                 <Phone size={18} className="shrink-0 mt-0.5 text-status-300" aria-hidden />
-                <span>{site.phone1} · {site.phone2}</span>
+                <span>
+                  <a href="tel:+551932897123" className="hover:text-white transition-colors">{site.phone1}</a>
+                  {" · "}
+                  <a href="tel:+551932895673" className="hover:text-white transition-colors">{site.phone2}</a>
+                </span>
               </li>
             </ul>
             <Link href="/contato" className="btn-primary mt-6 text-sm !py-3 !px-6">

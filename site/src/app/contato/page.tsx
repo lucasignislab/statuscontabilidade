@@ -40,7 +40,11 @@ export default function Contato() {
                   <Phone size={20} className="text-status-red shrink-0 mt-1" aria-hidden />
                   <div>
                     <p className="font-semibold text-ink">Telefones</p>
-                    <p className="text-slate">{site.phone1} · {site.phone2}</p>
+                    <p className="text-slate">
+                      <a href="tel:+551932897123" className="hover:text-status-red transition-colors">{site.phone1}</a>
+                      {" · "}
+                      <a href="tel:+551932895673" className="hover:text-status-red transition-colors">{site.phone2}</a>
+                    </p>
                   </div>
                 </div>
                 <div className="flex gap-4">
