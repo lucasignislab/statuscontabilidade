@@ -65,6 +65,14 @@
   --color-neutral-900: #232323;
   --color-neutral-950: #0E0E0E;
 
+  /* Feedback funcional (success usa verde sóbrio; error usa a escala status; info usa a escala ocean) */
+  --color-success-50: #EAF5EE;
+  --color-success-100: #D5EADD;
+  --color-success-700: #2E7D4F;
+  --color-warning-50: #FDF3E3;
+  --color-warning-100: #F8E3BC;
+  --color-warning-700: #A05A08;
+
   --font-display: "Lora", Georgia, serif;
   --font-sans: "Open Sans", system-ui, sans-serif;
 

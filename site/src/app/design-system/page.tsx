@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { ArrowRight, Calculator, Check, Rocket } from "lucide-react";
+import StatusBadge from "@/components/ui/StatusBadge";
+import Alert from "@/components/ui/Alert";
+import Accordion from "@/components/ui/Accordion";
+import Tabs from "@/components/ui/Tabs";
 
 export const metadata: Metadata = {
   title: "Design System",
@@ -160,10 +164,43 @@ const layers = [
 ];
 
 const roadmap = [
-  { name: "StatusBadge", desc: "Selo semântico para prazos e status de obrigações fiscais." },
-  { name: "Toast / Alert", desc: "Confirmação de envio do formulário de contato." },
-  { name: "FAQ Accordion", desc: "Perguntas frequentes nas páginas de serviço." },
-  { name: "Tabs", desc: "Alternância de regimes tributários no blog." },
+  { name: "Modal", desc: "Diálogo com scrim e trap de foco para confirmações importantes." },
+  { name: "Tooltip", desc: "Dicas flutuantes para termos fiscais nas páginas de serviço." },
+  { name: "Data Table", desc: "Tabelas de prazos e obrigações com ordenação." },
+  { name: "Pagination", desc: "Paginação do blog quando o acervo de artigos crescer." },
+];
+
+const faqDemo = [
+  {
+    q: "Quanto tempo leva para abrir uma empresa?",
+    a: "Em Campinas, o prazo médio fica entre 5 e 10 dias úteis, dependendo da Junta Comercial e da prefeitura. Cuidamos de todo o processo e avisamos você a cada etapa concluída.",
+  },
+  {
+    q: "Posso trocar de contador a qualquer momento?",
+    a: "Sim. A troca é simples: pedimos a documentação ao contador anterior, fazemos a transferência de responsabilidade no CRC e sua rotina fiscal não para um dia sequer.",
+  },
+  {
+    q: "Vocês atendem empresas fora de Campinas?",
+    a: "Atendemos. Todo o trabalho pode ser feito de forma digital, com reuniões por videochamada e documentos trocados com segurança. O atendimento próximo continua o mesmo.",
+  },
+];
+
+const tabsDemo = [
+  {
+    label: "Simples Nacional",
+    content:
+      "Regime para empresas com faturamento de até R$ 4,8 milhões ao ano. Unifica oito tributos em uma guia única e costuma ser a porta de entrada de novos negócios.",
+  },
+  {
+    label: "Lucro Presumido",
+    content:
+      "Indicado para empresas que faturam acima do limite do Simples ou que têm margens altas. Impostos calculados sobre uma margem presumida definida por lei.",
+  },
+  {
+    label: "Lucro Real",
+    content:
+      "Obrigatório para alguns setores e vantajoso para margens apertadas. Imposto calculado sobre o lucro efetivo, com escrituração completa e mais obrigações acessórias.",
+  },
 ];
 
 /* ---------------- helpers ---------------- */
@@ -216,7 +253,7 @@ export default function DesignSystemPage() {
               ["4", "famílias de cor"],
               ["44", "tons em escala (4 × 11)"],
               ["15", "color roles semânticos"],
-              ["6", "componentes documentados"],
+              ["10", "componentes documentados"],
             ].map(([n, label]) => (
               <div key={label} className="bg-ink px-6 py-5">
                 <p className="text-3xl text-white" style={{ fontFamily: "var(--font-display)" }}>{n}</p>
@@ -244,6 +281,10 @@ export default function DesignSystemPage() {
             ["#botoes", "Botões"],
             ["#form", "Formulários"],
             ["#cards", "Cards"],
+            ["#badge", "Badge"],
+            ["#alertas", "Alertas"],
+            ["#faq", "FAQ"],
+            ["#tabs", "Tabs"],
             ["#roadmap", "Roadmap"],
           ].map(([href, label]) => (
             <a key={href} href={href} className="text-ink-700 hover:text-status-red transition-colors">
@@ -731,12 +772,121 @@ export default function DesignSystemPage() {
         </div>
       </section>
 
+      {/* BADGE */}
+      <section className="bg-paper">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-20">
+          <SectionHead
+            id="badge"
+            index="13 · Componentes"
+            title="StatusBadge"
+            desc="Selo semântico para prazos e status de obrigações. Anatomia: radius pill · padding 4px × 12px · label 0.75rem 700 · dot de 6px na cor forte da variante."
+          />
+          <div className="mt-10 card-service p-8 hover:!transform-none">
+            <div className="flex flex-wrap items-center gap-3">
+              <StatusBadge variant="success">Certidão emitida</StatusBadge>
+              <StatusBadge variant="warning">Vence em 5 dias</StatusBadge>
+              <StatusBadge variant="error">DAS em atraso</StatusBadge>
+              <StatusBadge variant="info">Em processamento</StatusBadge>
+              <StatusBadge variant="neutral">Arquivado</StatusBadge>
+            </div>
+            <div className="mt-8 overflow-x-auto rounded-2xl border border-line">
+              <table className="w-full text-sm min-w-[560px]">
+                <thead>
+                  <tr className="bg-mist text-left">
+                    <th className="px-4 py-3 font-bold text-ink-700">Variante</th>
+                    <th className="px-4 py-3 font-bold text-ink-700">Fundo</th>
+                    <th className="px-4 py-3 font-bold text-ink-700">Texto e dot</th>
+                    <th className="px-4 py-3 font-bold text-ink-700">Uso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ["success", "success-50", "success-700", "Obrigação entregue, certidão limpa"],
+                    ["warning", "warning-50", "warning-700", "Prazo se aproximando"],
+                    ["error", "red-50", "red-700", "Atraso, pendência crítica"],
+                    ["info", "ocean-50", "ocean", "Em andamento, contexto neutro"],
+                    ["neutral", "mist", "ink-700", "Estado inativo ou arquivado"],
+                  ].map(([v, bg, fg, uso]) => (
+                    <tr key={v} className="border-t border-line">
+                      <td className="px-4 py-3 font-mono text-xs text-ink">{v}</td>
+                      <td className="px-4 py-3 font-mono text-xs text-slate">{bg}</td>
+                      <td className="px-4 py-3 font-mono text-xs text-slate">{fg}</td>
+                      <td className="px-4 py-3 text-slate">{uso}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="mt-4 text-sm text-slate">
+              As famílias success e warning são funcionais e novas no sistema
+              (--color-success-*/--color-warning-*). Error consome a escala status; info, a escala ocean.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ALERTAS */}
+      <section className="bg-mist border-y border-line">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-20">
+          <SectionHead
+            id="alertas"
+            index="14 · Componentes"
+            title="Alert / Toast"
+            desc="Feedback de formulário e avisos de prazo. Anatomia: radius 16px · padding 16px · ícone 20px na cor forte · fundo 50 + borda 100 da variante. A versão toast reusa os mesmos tokens fixada no topo."
+          />
+          <div className="mt-10 space-y-4 max-w-[720px]">
+            <Alert variant="success" title="Mensagem enviada">
+              Recebemos seus dados. Um contador da nossa equipe responde no mesmo dia útil.
+            </Alert>
+            <Alert variant="warning" title="Prazo se aproximando">
+              A DAS do Simples Nacional vence no dia 20. Envie o faturamento do mês até sexta-feira.
+            </Alert>
+            <Alert variant="error" title="Documento obrigatório">
+              O preenchimento deste campo é necessário para concluir o envio.
+            </Alert>
+            <Alert variant="info" title="Balanço disponível">
+              O balancete de agosto já está disponível para download na sua área.
+            </Alert>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-paper">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-20">
+          <SectionHead
+            id="faq"
+            index="15 · Componentes"
+            title="FAQ Accordion"
+            desc="Uma pergunta aberta por vez. Abertura por grid-rows 0fr → 1fr em 250ms, pergunta ativa em status-red, chevron gira 180°. Experimente clicar."
+          />
+          <div className="mt-10 max-w-[820px]">
+            <Accordion items={faqDemo} />
+          </div>
+        </div>
+      </section>
+
+      {/* TABS */}
+      <section className="bg-mist border-y border-line">
+        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-20">
+          <SectionHead
+            id="tabs"
+            index="16 · Componentes"
+            title="Tabs"
+            desc="Navegação por abas para comparar regimes e cenários. Item ativo em status-red com indicador de 2px que desliza em 150ms. Experimente trocar de aba."
+          />
+          <div className="mt-10 card-service p-8 hover:!transform-none">
+            <Tabs tabs={tabsDemo} />
+          </div>
+        </div>
+      </section>
+
       {/* ROADMAP */}
       <section className="bg-paper">
         <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-20">
           <SectionHead
             id="roadmap"
-            index="13 · Roadmap"
+            index="17 · Roadmap"
             title="Próximos componentes"
             desc="Componentes planejados que consumirão os roles semânticos já definidos."
           />
