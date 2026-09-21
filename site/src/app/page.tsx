@@ -34,7 +34,7 @@ export default function Home() {
           />
           <Reveal delay={0.5}>
             <p className="mt-6 text-xl text-mist/80 max-w-[56ch] leading-relaxed">
-              Há {site.years} anos em Barão Geraldo, a <span className="text-red-100 font-semibold">Status</span> Contabilidade atende
+              Há {site.years} anos em Barão Geraldo, a <span className="text-status-red font-semibold">Status</span> Contabilidade atende
               empresas de Campinas e região com uma equipe que conhece cada cliente
               pelo nome.
             </p>
