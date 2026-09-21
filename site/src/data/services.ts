@@ -22,6 +22,7 @@ export interface Service {
   title: string;
   short: string;
   icon: string;
+  image: string;
   hero: string;
   intro: string;
   items: string[];
@@ -31,6 +32,7 @@ export interface Service {
 export const services: Service[] = [
   {
     slug: "abertura-de-empresas",
+    image: "/images/svc-abertura.jpg",
     title: "Abertura de empresas",
     short: "Do contrato social ao CNPJ ativo, sem idas e vindas aos órgãos.",
     icon: "rocket",
@@ -49,6 +51,7 @@ export const services: Service[] = [
   },
   {
     slug: "contabilidade",
+    image: "/images/svc-contabilidade.jpg",
     title: "Contabilidade completa",
     short: "Escrituração, balancetes e balanços com supervisão de contadores sêniores.",
     icon: "calculator",
@@ -67,6 +70,7 @@ export const services: Service[] = [
   },
   {
     slug: "fiscal",
+    image: "/images/svc-fiscal.jpg",
     title: "Departamento fiscal",
     short: "Apuração de tributos, guias e obrigações acessórias sem multa e sem susto.",
     icon: "file-check",
@@ -85,6 +89,7 @@ export const services: Service[] = [
   },
   {
     slug: "folha-e-rh",
+    image: "/images/svc-folha.jpg",
     title: "Folha de pagamento e RH",
     short: "Admissão, folha, encargos e desligamento dentro da lei trabalhista.",
     icon: "users",
@@ -103,6 +108,7 @@ export const services: Service[] = [
   },
   {
     slug: "irpf",
+    image: "/images/svc-irpf.jpg",
     title: "Imposto de Renda Pessoa Física",
     short: "Sua declaração entregue no prazo, sem erro e sem dor de cabeça.",
     icon: "user-check",
@@ -120,6 +126,7 @@ export const services: Service[] = [
   },
   {
     slug: "irpj",
+    image: "/images/svc-irpj.jpg",
     title: "Imposto de Renda Pessoa Jurídica",
     short: "Declaração anual da empresa com orientação tributária o ano inteiro.",
     icon: "building",
@@ -137,6 +144,7 @@ export const services: Service[] = [
   },
   {
     slug: "regularizacao",
+    image: "/images/svc-regularizacao.jpg",
     title: "Regularização de empresas",
     short: "Pendências resolvidas e certidões limpas para sua empresa voltar a operar tranquila.",
     icon: "shield-check",

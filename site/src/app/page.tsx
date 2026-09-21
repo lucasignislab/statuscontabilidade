@@ -1,16 +1,7 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  Building2,
-  Calculator,
-  FileCheck2,
-  MapPin,
-  Rocket,
-  ShieldCheck,
-  UserCheck,
-  Users,
-} from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import HeroCanvas from "@/components/HeroCanvas";
+import ServiceBands from "@/components/ServiceBands";
 import {
   CountUp,
   ImageReveal,
@@ -19,16 +10,6 @@ import {
   SplitHeadline,
 } from "@/components/motion";
 import { services, site, whatsappLink } from "@/data/services";
-
-const icons: Record<string, React.ReactNode> = {
-  rocket: <Rocket size={24} strokeWidth={1.5} aria-hidden />,
-  calculator: <Calculator size={24} strokeWidth={1.5} aria-hidden />,
-  "file-check": <FileCheck2 size={24} strokeWidth={1.5} aria-hidden />,
-  users: <Users size={24} strokeWidth={1.5} aria-hidden />,
-  "user-check": <UserCheck size={24} strokeWidth={1.5} aria-hidden />,
-  building: <Building2 size={24} strokeWidth={1.5} aria-hidden />,
-  "shield-check": <ShieldCheck size={24} strokeWidth={1.5} aria-hidden />,
-};
 
 export default function Home() {
   return (
@@ -121,52 +102,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <RevealStagger className="mt-12 grid gap-6 sm:grid-cols-2">
-            {services.map((s, i) =>
-              i === 0 ? (
-                <Link
-                  key={s.slug}
-                  href={`/servicos/${s.slug}`}
-                  className="card-service p-8 sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-6 group"
-                >
-                  <span className="icon-chip shrink-0">{icons[s.icon]}</span>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-semibold text-ink">{s.title}</h3>
-                    <p className="mt-2 text-slate leading-relaxed max-w-[58ch]">{s.short}</p>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-700 shrink-0">
-                    Saiba mais
-                    <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" aria-hidden />
-                  </span>
-                </Link>
-              ) : (
-                <Link
-                  key={s.slug}
-                  href={`/servicos/${s.slug}`}
-                  className="card-service p-7 flex flex-col group"
-                >
-                  <span className="icon-chip">{icons[s.icon]}</span>
-                  <h3 className="mt-5 text-xl font-semibold text-ink">{s.title}</h3>
-                  <p className="mt-2 text-slate text-[0.95rem] leading-relaxed flex-1">{s.short}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-red-700">
-                    Saiba mais
-                    <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" aria-hidden />
-                  </span>
-                </Link>
-              )
-            )}
-            <div className="card-service p-7 sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-6 bg-red-50 border-red-100">
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold text-ink">Não sabe por onde começar?</h3>
-                <p className="mt-2 text-slate text-[0.95rem] max-w-[58ch]">
-                  Conte o momento da sua empresa e nossa equipe indica o melhor caminho.
-                </p>
-              </div>
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm !py-3 !px-6 shrink-0 self-start">
-                Pedir orientação
-              </a>
-            </div>
-          </RevealStagger>
+          <ServiceBands services={services} />
         </div>
       </section>
 
