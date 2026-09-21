@@ -36,29 +36,45 @@ export default async function ServicePage({
 
   return (
     <>
-      <section className="pt-[72px] bg-mist">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-24">
-          <Reveal>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-ocean hover:text-ocean-600 transition-colors"
-            >
-              <ArrowLeft size={15} aria-hidden />
-              Todos os serviços
-            </Link>
-            <h1 className="mt-6 text-[clamp(2.25rem,4.5vw,3.5rem)] text-ink max-w-[20ch]">
-              {service.hero}
-            </h1>
-            <p className="mt-6 text-xl text-slate max-w-[62ch] leading-relaxed">
-              {service.intro}
-            </p>
-            <div className="mt-9">
-              <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                Falar com um contador
-                <ArrowRight size={18} aria-hidden />
-              </a>
-            </div>
-          </Reveal>
+      <section className="relative pt-[72px]">
+        <div className="relative overflow-hidden bg-ink">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={service.image}
+            alt=""
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/75 to-ink/35"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-[1200px] px-6 lg:px-12 py-20 lg:py-28">
+            <Reveal>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-mist/70 hover:text-white transition-colors"
+              >
+                <ArrowLeft size={15} aria-hidden />
+                Todos os serviços
+              </Link>
+              <p className="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-red-100">
+                {service.title}
+              </p>
+              <h1 className="mt-3 text-[clamp(2.25rem,4.5vw,3.5rem)] text-white max-w-[18ch]">
+                {service.hero}
+              </h1>
+              <p className="mt-6 text-xl text-mist/80 max-w-[56ch] leading-relaxed">
+                {service.intro}
+              </p>
+              <div className="mt-9">
+                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-primary">
+                  Falar com um contador
+                  <ArrowRight size={18} aria-hidden />
+                </a>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -118,13 +134,25 @@ export default async function ServicePage({
           </Reveal>
           <RevealStagger className="mt-8 grid gap-6 sm:grid-cols-3">
             {others.map((s) => (
-              <Link key={s.slug} href={`/servicos/${s.slug}`} className="card-service p-6 group">
-                <h3 className="text-lg font-semibold text-ink">{s.title}</h3>
-                <p className="mt-2 text-sm text-slate">{s.short}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-red-700">
-                  Saiba mais
-                  <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" aria-hidden />
-                </span>
+              <Link key={s.slug} href={`/servicos/${s.slug}`} className="card-service overflow-hidden group !p-0">
+                <div className="h-36 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={s.image}
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-ink">{s.title}</h3>
+                  <p className="mt-2 text-sm text-slate">{s.short}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-red-700">
+                    Saiba mais
+                    <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" aria-hidden />
+                  </span>
+                </div>
               </Link>
             ))}
           </RevealStagger>
