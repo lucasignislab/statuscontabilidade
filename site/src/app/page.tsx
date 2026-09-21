@@ -29,7 +29,7 @@ export default function Home() {
           <SplitHeadline
             text="Cuidamos da sua contabilidade para você cuidar do seu negócio."
             accent="negócio"
-            accentClass="italic text-red-100"
+            accentClass="italic text-status-red"
             className="text-[clamp(2.5rem,5.5vw,4.25rem)] text-white max-w-[20ch]"
           />
           <Reveal delay={0.5}>
