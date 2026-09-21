@@ -183,13 +183,13 @@ export default function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="relative overflow-hidden" style={{ background: "linear-gradient(120deg, #C00518 0%, #BA2B25 100%)" }}>
+      <section className="relative overflow-hidden" style={{ background: "#FC958B" }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-20 lg:py-24 text-center">
           <Reveal>
-            <h2 className="text-[clamp(2rem,4vw,3rem)] text-white max-w-[24ch] mx-auto">
+            <h2 className="text-[clamp(2rem,4vw,3rem)] text-ink max-w-[24ch] mx-auto">
               Sua empresa merece um contador que <em className="italic">atende o telefone</em>
             </h2>
-            <p className="mt-4 text-white/85 max-w-[52ch] mx-auto">
+            <p className="mt-4 text-ink/80 max-w-[52ch] mx-auto">
               Converse agora com a nossa equipe pelo WhatsApp. O primeiro diagnóstico é por nossa conta.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-4">
@@ -197,19 +197,19 @@ export default function Home() {
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-white text-status-red font-bold text-[0.95rem] px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5 shadow-lg"
+                className="inline-flex items-center gap-2 bg-status-red text-white font-bold text-[0.95rem] px-8 py-4 rounded-full transition-transform hover:-translate-y-0.5 shadow-lg"
               >
                 Falar com um contador
                 <ArrowRight size={18} aria-hidden />
               </a>
               <Link
                 href="/contato"
-                className="inline-flex items-center gap-2 border-[1.5px] border-white/70 text-white font-semibold text-[0.95rem] px-8 py-4 rounded-full transition-colors hover:bg-white/10"
+                className="inline-flex items-center gap-2 border-[1.5px] border-ink/60 text-ink font-semibold text-[0.95rem] px-8 py-4 rounded-full transition-colors hover:bg-ink/5"
               >
                 Enviar uma mensagem
               </Link>
             </div>
-            <p className="mt-8 text-sm text-white/70">
+            <p className="mt-8 text-sm text-ink/70">
               {site.phone1} · {site.phone2}
             </p>
           </Reveal>
