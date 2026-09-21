@@ -75,7 +75,7 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="border-l border-white/15 pl-6">
+            <div className="border-l border-white/15 pl-6 max-lg:border-0 max-lg:pl-0">
               <p className="text-lg text-white font-semibold">Equipe sênior, supervisão direta</p>
               <p className="mt-2 text-mist/70 text-[0.95rem]">
                 Cada área é acompanhada por consultores técnicos especializados. Nada passa sem revisão.
@@ -83,7 +83,7 @@ export default function Home() {
             </div>
           </Reveal>
           <Reveal delay={0.3}>
-            <div className="border-l border-white/15 pl-6">
+            <div className="border-l border-white/15 pl-6 max-lg:border-0 max-lg:pl-0">
               <p className="text-lg text-white font-semibold">Atendimento pelo nome</p>
               <p className="mt-2 text-mist/70 text-[0.95rem]">
                 Você fala com quem cuida da sua empresa, não com uma central. Telefone e WhatsApp diretos.

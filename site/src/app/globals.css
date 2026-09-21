@@ -288,3 +288,32 @@ h1, h2, h3, h4 {
   }
   html { scroll-behavior: auto; }
 }
+
+/* Mobile e tablet: títulos e textos centralizados */
+@media (max-width: 1023px) {
+  h1, h2, h3, h4, h5, h6,
+  p, ul, ol, li {
+    text-align: center;
+  }
+  /* leitura longa (artigo do blog) continua à esquerda */
+  article :where(p, li) {
+    text-align: left;
+  }
+  /* blocos com largura máxima acompanham o centro */
+  :where(p, ul, ol, div)[class*="max-w"] {
+    margin-inline: auto;
+  }
+  /* grupos de botões e linhas de ícone + texto */
+  .flex-wrap:where(.gap-4, .gap-3, .gap-6),
+  p.flex, li.flex {
+    justify-content: center;
+  }
+  /* footer inteiro centrado */
+  footer :where(div, nav, a.inline-block) {
+    text-align: center;
+  }
+  /* formulários mantêm alinhamento à esquerda */
+  input, textarea, select, label, form p {
+    text-align: left;
+  }
+}
