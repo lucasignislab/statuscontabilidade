@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <p className="text-2xl italic text-status-red" style={{ fontFamily: "var(--font-display)" }}>
+            <p className="text-2xl italic text-status-300" style={{ fontFamily: "var(--font-display)" }}>
               Status <span className="not-italic text-sm font-sans font-semibold uppercase tracking-wide text-mist/70">Contabilidade</span>
             </p>
             <p className="mt-4 text-sm text-mist/70 leading-relaxed max-w-xs">
@@ -33,11 +33,11 @@ export default function Footer() {
             <p className="text-xs font-bold uppercase tracking-widest text-mist/50 mb-4">Contato</p>
             <ul className="space-y-3 text-sm text-mist/80">
               <li className="flex gap-3">
-                <MapPin size={18} className="shrink-0 mt-0.5 text-status-red" aria-hidden />
+                <MapPin size={18} className="shrink-0 mt-0.5 text-status-300" aria-hidden />
                 <span>{site.address}<br />CEP {site.cep}</span>
               </li>
               <li className="flex gap-3">
-                <Phone size={18} className="shrink-0 mt-0.5 text-status-red" aria-hidden />
+                <Phone size={18} className="shrink-0 mt-0.5 text-status-300" aria-hidden />
                 <span>{site.phone1} · {site.phone2}</span>
               </li>
             </ul>
@@ -49,7 +49,7 @@ export default function Footer() {
 
         <hr className="my-10 border-white/10" />
         <div className="flex flex-col sm:flex-row justify-between gap-3 text-xs text-mist/50">
-          <p>© {new Date().getFullYear()} <span className="text-status-red font-semibold">Status</span> Contabilidade. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} <span className="text-status-300 font-semibold">Status</span> Contabilidade. Todos os direitos reservados.</p>
           <Link href="/privacidade" className="hover:text-mist transition-colors">
             Política de privacidade
           </Link>

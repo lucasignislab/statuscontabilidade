@@ -95,8 +95,8 @@ export default function ServiceBands({ services }: { services: Service[] }) {
             <div
               className={`absolute inset-0 bg-gradient-to-r ${
                 fromRight
-                  ? "from-ink/40 via-ink/70 to-ink/95"
-                  : "from-ink/95 via-ink/70 to-ink/40"
+                  ? "from-ink/85 via-ink/75 to-ink/70 lg:from-ink/40 lg:via-ink/70 lg:to-ink/95"
+                  : "from-ink/85 via-ink/75 to-ink/70 lg:from-ink/95 lg:via-ink/70 lg:to-ink/40"
               }`}
               aria-hidden
             />
