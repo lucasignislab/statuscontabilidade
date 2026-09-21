@@ -54,7 +54,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-between gap-3 text-xs text-mist/50">
           <p>© {new Date().getFullYear()} <span className="text-status-300 font-semibold">Status</span> Contabilidade. Todos os direitos reservados.</p>
           <a href="https://lucascoelhoux.site" target="_blank" rel="noopener noreferrer" className="hover:text-mist transition-colors">
-            Designed by Lucas Coelho
+            Designed by <span className="text-status-300 font-semibold">Lucas Coelho</span>
           </a>
         </div>
       </div>
