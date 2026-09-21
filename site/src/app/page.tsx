@@ -17,7 +17,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative pt-[72px] overflow-hidden">
         <HeroCanvas />
-        <div className="relative mx-auto max-w-[1200px] px-6 lg:px-12 py-20 lg:py-28 grid lg:grid-cols-2 gap-14 items-center">
+        <div className="relative mx-auto max-w-[1200px] px-6 lg:px-12 py-20 lg:py-28 grid lg:grid-cols-2 gap-14 lg:items-start items-center">
           <div>
             <SplitHeadline
               text="Cuidamos da sua contabilidade para você cuidar do seu negócio."
