@@ -22,7 +22,7 @@ export default function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div
-          className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/75 to-ink/35"
+          className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/60"
           aria-hidden
         />
         <div className="relative mx-auto max-w-[1200px] px-6 lg:px-12 py-24 lg:py-36">
