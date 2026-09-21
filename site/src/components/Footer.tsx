@@ -49,7 +49,7 @@ export default function Footer() {
 
         <hr className="my-10 border-white/10" />
         <div className="flex flex-col sm:flex-row justify-between gap-3 text-xs text-mist/50">
-          <p>© {new Date().getFullYear()} Status Contabilidade. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} <span className="text-status-red font-semibold">Status</span> Contabilidade. Todos os direitos reservados.</p>
           <Link href="/privacidade" className="hover:text-mist transition-colors">
             Política de privacidade
           </Link>

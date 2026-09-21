@@ -38,7 +38,7 @@ export default function QuemSomos() {
               Há <em className="italic text-status-red">22 anos</em>, a contabilidade por trás das empresas de Campinas
             </h1>
             <p className="mt-6 text-xl text-slate leading-relaxed max-w-[52ch]">
-              A Status Contabilidade nasceu em Barão Geraldo e cresceu junto com os
+              A <span className="text-status-red font-semibold">Status</span> Contabilidade nasceu em Barão Geraldo e cresceu junto com os
               negócios da região. São mais de duas décadas de trabalho contínuo ao
               lado de comércios, clínicas e prestadores de serviço que confiam seus
               números à nossa equipe.
@@ -88,7 +88,7 @@ export default function QuemSomos() {
             </h2>
             <p className="mt-5 text-mist/75 leading-relaxed max-w-[52ch]">
               Aqui você não é um número na carteira de clientes. Quando liga para a
-              Status, fala com quem conhece a sua empresa e o seu histórico. É assim
+              <span className="text-status-red font-semibold"> Status</span>, fala com quem conhece a sua empresa e o seu histórico. É assim
               que trabalhamos há 22 anos, e é assim que pretendemos continuar.
             </p>
             <div className="mt-8">

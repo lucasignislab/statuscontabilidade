@@ -45,7 +45,7 @@ export default function Home() {
             />
             <Reveal delay={0.5}>
               <p className="mt-6 text-xl text-slate max-w-[52ch] leading-relaxed">
-                Há {site.years} anos em Barão Geraldo, a Status Contabilidade atende
+                Há {site.years} anos em Barão Geraldo, a <span className="text-status-red font-semibold">Status</span> Contabilidade atende
                 empresas de Campinas e região com uma equipe que conhece cada cliente
                 pelo nome.
               </p>
@@ -222,7 +222,7 @@ export default function Home() {
                 Conteúdo que ajuda antes mesmo de <em className="italic text-status-red">virar cliente</em>
               </h2>
               <p className="mt-4 text-slate max-w-[52ch]">
-                No blog da Status, respondemos as dúvidas que ouvimos todos os dias no
+                No blog da <span className="text-status-red font-semibold">Status</span>, respondemos as dúvidas que ouvimos todos os dias no
                 escritório, começando pela escolha que trava a maioria dos novos
                 empresários.
               </p>

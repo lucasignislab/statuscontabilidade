@@ -50,7 +50,7 @@ export default function Privacidade() {
           <div>
             <h2 className="text-xl text-ink">Responsável pelos dados</h2>
             <p className="mt-3 text-slate">
-              Status Contabilidade, {site.address}, CEP {site.cep}. E-mail: {site.email}
+              <span className="text-status-red font-semibold">Status</span> Contabilidade, {site.address}, CEP {site.cep}. E-mail: {site.email}
             </p>
           </div>
         </div>

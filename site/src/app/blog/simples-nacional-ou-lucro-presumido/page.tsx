@@ -30,7 +30,7 @@ export default function Artigo() {
               Simples Nacional ou Lucro Presumido: qual é melhor para a sua empresa?
             </h1>
             <p className="mt-5 text-lg text-slate leading-relaxed">
-              Publicado pela equipe da Status Contabilidade · Setembro de 2026
+              Publicado pela equipe da <span className="text-status-red font-semibold">Status</span> Contabilidade · Setembro de 2026
             </p>
           </Reveal>
         </div>
