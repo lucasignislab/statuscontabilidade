@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+@theme {
+  --color-status-red: #C00518;
+  --color-status-red-deep: #BA2B25;
+  --color-red-50: #FDF0F1;
+  --color-red-100: #FADCE0;
+  --color-red-700: #8F0412;
+  --color-ink: #313B48;
+  --color-ink-700: #46536A;
+  --color-ocean: #08508C;
+  --color-ocean-600: #0A6AB5;
+  --color-ocean-50: #EBF1F8;
+  --color-paper: #FFFFFF;
+  --color-mist: #F9F9F9;
+  --color-line: #E4E4E4;
+  --color-slate: #555555;
+
+  --font-display: "Lora", Georgia, serif;
+  --font-sans: "Open Sans", system-ui, sans-serif;
+
+  --shadow-sm: 0 1px 3px rgba(49, 59, 72, 0.08);
+  --shadow-md: 0 8px 24px rgba(49, 59, 72, 0.10);
+  --shadow-lg: 0 16px 48px rgba(49, 59, 72, 0.14);
+  --shadow-red-glow: 0 8px 24px rgba(192, 5, 24, 0.25);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-status-red);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-status-red);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* ---------- componentes ---------- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-status-red);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  background: var(--color-status-red-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-red-glow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-ink);
+  transition: all 0.2s ease;
+}
+.btn-secondary:hover {
+  border-color: var(--color-status-red);
+  color: var(--color-status-red);
+  background: var(--color-mist);
+}
+
+.link-underline {
+  position: relative;
+  color: var(--color-ocean);
+  font-weight: 600;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease-out;
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.card-service {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-service:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.icon-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--color-red-50);
+  color: var(--color-status-red);
+  transition: background 0.25s ease;
+}
+.card-service:hover .icon-chip {
+  background: var(--color-red-100);
+}
+
+.input-field {
+  width: 100%;
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-status-red);
+  box-shadow: 0 0 0 2px rgba(192, 5, 24, 0.35);
+}
+.input-field::placeholder {
+  color: var(--color-slate);
+}
+
+.label-field {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-700);
+  margin-bottom: 0.5rem;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-line);
+  border: none;
+}
+
+/* WhatsApp flutuante */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 50;
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: var(--color-status-red);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-red-glow);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.whatsapp-fab:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: var(--color-status-red-deep);
+}
+
+@media (max-width: 768px) {
+  .whatsapp-fab {
+    animation: wa-pulse 6s ease-in-out infinite;
+  }
+}
+@keyframes wa-pulse {
+  0%, 88%, 100% { transform: scale(1); }
+  92% { transform: scale(1.07); }
+  96% { transform: scale(1); }
+}
+
+/* Split text: wrapper esconde, inner desliza */
+.split-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+.split-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

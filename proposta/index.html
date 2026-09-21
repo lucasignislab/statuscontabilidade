@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Proposta — Status Contabilidade · Lucas Coelho</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#212121; --smoke:#1A1717; --bone:#F4F1ED; --ash:#827F7E;
+    --ember:#E28868; --blush:#F2C8CC;
+    --border-faint:rgba(130,127,126,.18); --border-ghost:rgba(130,127,126,.4);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:var(--ink);}
+  body{font-family:'Instrument Serif',Georgia,serif;color:var(--bone);-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+  @page{size:297mm 167mm;margin:0;}
+  .slide{
+    width:297mm;height:167mm;page-break-after:always;position:relative;
+    padding:14mm 18mm 12mm;display:flex;flex-direction:column;overflow:hidden;
+    background:var(--ink);
+  }
+  .slide:last-child{page-break-after:auto;}
+  .slide.alt{background:var(--smoke);}
+
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace;}
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:8.5pt;text-transform:uppercase;
+    letter-spacing:.25em;color:var(--ash);display:block;margin-bottom:6mm;
+  }
+  .display{font-family:'Instrument Serif',serif;font-weight:400;line-height:.92;letter-spacing:-.03em;}
+  .huge{font-size:52pt;}
+  .big{font-size:38pt;}
+  .mid{font-size:26pt;}
+  em{color:var(--ember);font-style:italic;}
+  .ash{color:var(--ash);}
+  .ember{color:var(--ember);}
+  .blush{color:var(--blush);}
+
+  .header{display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1px solid var(--border-faint);padding-bottom:4mm;margin-bottom:8mm;}
+  .header .mono{font-size:7.5pt;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);}
+  .footer{position:absolute;bottom:8mm;left:18mm;right:18mm;display:flex;
+    justify-content:space-between;border-top:1px solid var(--border-faint);padding-top:3mm;}
+  .footer .mono{font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);}
+
+  .content{flex:1;display:flex;flex-direction:column;justify-content:center;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:10mm;}
+  .cols-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8mm;}
+
+  .card{border:1px solid var(--border-faint);padding:6mm;border-radius:2mm;}
+  .card h3{font-size:15pt;margin-bottom:2.5mm;font-weight:400;}
+  .card p, .card li{font-size:10.5pt;line-height:1.45;color:var(--bone);}
+  .muted{color:var(--ash);}
+
+  ul.clean{list-style:none;}
+  ul.clean li{padding:2.2mm 0;border-bottom:1px solid var(--border-faint);
+    font-size:11pt;line-height:1.4;display:flex;gap:4mm;align-items:baseline;}
+  ul.clean li:last-child{border-bottom:none;}
+  ul.clean .n{font-family:'JetBrains Mono',monospace;font-size:8pt;color:var(--ember);letter-spacing:.1em;flex-shrink:0;}
+
+  .quote{font-size:13pt;line-height:1.5;font-style:italic;color:var(--blush);}
+
+  .pill{display:inline-block;border:1px solid var(--border-ghost);border-radius:999px;
+    padding:2mm 6mm;font-family:'JetBrains Mono',monospace;font-size:8.5pt;
+    letter-spacing:.2em;text-transform:uppercase;}
+  .pill.solid{background:var(--bone);color:var(--ink);border-color:var(--bone);}
+  .pill.ember{border-color:var(--ember);color:var(--ember);}
+
+  table.spec{width:100%;border-collapse:collapse;}
+  table.spec td, table.spec th{padding:2.6mm 0;border-bottom:1px solid var(--border-faint);
+    font-size:10.5pt;text-align:left;vertical-align:top;}
+  table.spec th{font-family:'JetBrains Mono',monospace;font-size:8pt;text-transform:uppercase;
+    letter-spacing:.2em;color:var(--ash);font-weight:400;}
+  table.spec tr:last-child td{border-bottom:none;}
+
+  .phase{display:flex;gap:6mm;padding:4mm 0;border-bottom:1px solid var(--border-faint);align-items:baseline;}
+  .phase:last-child{border-bottom:none;}
+  .phase .wk{font-family:'JetBrains Mono',monospace;font-size:9pt;color:var(--ember);
+    letter-spacing:.15em;text-transform:uppercase;flex-shrink:0;width:26mm;}
+  .phase h4{font-size:13pt;font-weight:400;}
+  .phase p{font-size:10pt;color:var(--ash);line-height:1.4;}
+
+  .check li{display:flex;gap:4mm;align-items:baseline;padding:2mm 0;font-size:11pt;
+    border-bottom:1px solid var(--border-faint);}
+  .check .box{font-family:'JetBrains Mono',monospace;color:var(--ember);font-size:10pt;}
+
+  .price-row{display:flex;gap:8mm;align-items:stretch;}
+  .price-card{flex:1;border:1px solid var(--border-faint);border-radius:2mm;padding:8mm;position:relative;}
+  .price-card.featured{border-color:var(--ember);}
+  .price-card .value{font-size:44pt;line-height:1;letter-spacing:-.03em;margin:3mm 0;}
+  .tag-feature{position:absolute;top:-3.5mm;right:6mm;background:var(--ember);color:var(--ink);
+    font-family:'JetBrains Mono',monospace;font-size:7pt;letter-spacing:.2em;text-transform:uppercase;
+    padding:1.5mm 4mm;border-radius:999px;}
+
+  .mega-word{position:absolute;bottom:-6mm;right:-4mm;font-size:120pt;line-height:.8;
+    color:rgba(244,241,237,.04);letter-spacing:-.04em;pointer-events:none;font-style:italic;}
+</style>
+</head>
+<body>
+
+<!-- 01 · CAPA -->
+<section class="slide">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">Campinas · Brasil</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(01) — Proposta comercial · Setembro 2026</span>
+    <h1 class="display huge">Um novo site para a<br><em>Status Contabilidade</em></h1>
+    <p style="margin-top:8mm;font-size:13pt;color:var(--ash);max-width:150mm;line-height:1.5;">
+      Analisei o site atual da empresa e preparei este material para mostrar o que encontrei,
+      o que isso está custando para o negócio e como pretendo resolver. Ao final, o cronograma,
+      os materiais que vou precisar e o valor do projeto.
+    </p>
+    <div style="margin-top:10mm;display:flex;gap:4mm;">
+      <span class="pill">Diagnóstico</span>
+      <span class="pill">Novo site</span>
+      <span class="pill">SEO local</span>
+      <span class="pill ember">Investimento</span>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="mono">lucascoelhoux.site</span>
+    <span class="mono">Preparado para Status Contabilidade · Barão Geraldo, Campinas — SP</span>
+  </div>
+</section>
+
+<!-- 02 · DIAGNÓSTICO -->
+<section class="slide alt">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(02) — Diagnóstico</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(02) — O site atual, sem filtro</span>
+    <h2 class="display big">O que encontrei em<br><em>statuscontab.com.br</em></h2>
+    <div class="cols" style="margin-top:8mm;">
+      <ul class="clean">
+        <li><span class="n">01</span><span>O topo de todas as páginas mostra um <strong class="ember">endereço falso de Nova York</strong> e um telefone americano fictício. São restos do template que ninguém trocou.</span></li>
+        <li><span class="n">02</span><span>O e-mail de contato exibido é <strong class="ember">info@themegrill.com</strong>, do fabricante do tema. Se alguém escrever, a Status nunca recebe.</span></li>
+        <li><span class="n">03</span><span>O rodapé diz <strong class="ember">"© 2013"</strong> e "Powered by WordPress". Para quem visita, a empresa parece abandonada.</span></li>
+        <li><span class="n">04</span><span>O site <strong class="ember">não tem HTTPS</strong>. O navegador avisa "Não seguro" antes da pessoa ler qualquer linha.</span></li>
+      </ul>
+      <ul class="clean">
+        <li><span class="n">05</span><span>O site inteiro tem <strong class="ember">3 páginas</strong>, com pouco texto. O Google quase não tem o que mostrar nas buscas.</span></li>
+        <li><span class="n">06</span><span><strong class="ember">Não há como pedir orçamento</strong>: nenhum botão de WhatsApp, nenhum formulário, nenhuma chamada para contato.</span></li>
+        <li><span class="n">07</span><span>Há <strong class="ember">trechos quebrados</strong>: a palavra "Empregos" solta no meio da home, linhas de traços no texto e ícones de redes sociais que apontam para o template.</span></li>
+        <li><span class="n">08</span><span><strong class="ember">Não existe blog</strong>. Quem pesquisa dúvidas contábeis no Google nunca chega até a Status.</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="mono">Diagnóstico feito em 17/09/2026</span>
+    <span class="mono">02</span>
+  </div>
+</section>
+
+<!-- 03 · IMPACTO NO NEGÓCIO -->
+<section class="slide">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(03) — Impacto</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(03) — O que isso custa para o negócio</span>
+    <h2 class="display big">Cada visitante que sai<br>é um <em>cliente que não fecha</em></h2>
+    <div class="cols-3" style="margin-top:8mm;">
+      <div class="card">
+        <h3 class="display mid ember">Credibilidade</h3>
+        <p class="muted" style="margin-top:2mm;">Um contador cuida do dinheiro e das obrigações fiscais de uma empresa. Quando o próprio site mostra endereço falso e e-mail errado, o visitante conclui que o escritório é <em class="blush">descuidado</em>. E confiança perdida dificilmente volta.</p>
+      </div>
+      <div class="card">
+        <h3 class="display mid ember">Invisibilidade</h3>
+        <p class="muted" style="margin-top:2mm;">Quem busca "contabilidade em Campinas" ou "abrir empresa em Barão Geraldo" encontra os concorrentes, não a Status. Sem páginas de serviço e sem HTTPS, o Google <em class="blush">não tem o que mostrar</em>.</p>
+      </div>
+      <div class="card">
+        <h3 class="display mid ember">Receita parada</h3>
+        <p class="muted" style="margin-top:2mm;">São 22 anos de mercado, equipe sênior e uma lista grande de serviços. Nada disso vira contato porque o site nunca pede um. Hoje ele <em class="blush">só gera custo</em> de hospedagem e domínio.</p>
+      </div>
+    </div>
+    <p class="quote" style="margin-top:8mm;">"A primeira impressão que o site passa hoje é a de uma empresa parada no tempo. Essa decisão acontece em poucos segundos, todos os dias, sem que ninguém do escritório perceba."</p>
+  </div>
+  <div class="footer">
+    <span class="mono">lucascoelhoux.site</span>
+    <span class="mono">03</span>
+  </div>
+</section>
+
+<!-- 04 · A OPORTUNIDADE -->
+<section class="slide alt">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(04) — Oportunidade</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(04) — O que o novo site entrega</span>
+    <h2 class="display big">De cartão de visita vencido<br>a <em>canal de novos clientes</em></h2>
+    <div class="cols" style="margin-top:8mm;">
+      <ul class="clean">
+        <li><span class="n">→</span><span>Os 22 anos de mercado viram o centro da página inicial, com fotos reais da equipe, do escritório e o registro no CRC em destaque.</span></li>
+        <li><span class="n">→</span><span>Botão de WhatsApp visível o tempo todo, chamada "Fale com um contador" e formulário de diagnóstico gratuito para captar interessados.</span></li>
+        <li><span class="n">→</span><span>Cada serviço ganha uma página própria: abertura de empresas, fiscal, contábil, folha e RH, IRPF, IRPJ e regularização. Assim cada serviço pode aparecer na busca correspondente.</span></li>
+      </ul>
+      <ul class="clean">
+        <li><span class="n">→</span><span>Otimização para buscas como "contabilidade em Campinas" e "contador em Barão Geraldo", com o endereço certo no Google Maps.</span></li>
+        <li><span class="n">→</span><span>Blog pronto para publicar artigos que respondem dúvidas reais: MEI ou ME, Simples Nacional, Reforma Tributária. É o que traz visita orgânica todo mês.</span></li>
+        <li><span class="n">→</span><span>Site com HTTPS, carregamento rápido e leitura confortável no celular, que é onde a maioria dos clientes vai acessar.</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="mono">lucascoelhoux.site</span>
+    <span class="mono">04</span>
+  </div>
+</section>
+
+<!-- 05 · ESCOPO -->
+<section class="slide">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(05) — Escopo</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(05) — O que está incluído</span>
+    <h2 class="display big">Escopo do <em>novo site</em></h2>
+    <div class="cols" style="margin-top:8mm;">
+      <div>
+        <table class="spec">
+          <tr><th colspan="2">Páginas e estrutura</th></tr>
+          <tr><td>Home</td><td class="muted">História dos 22 anos e chamadas para contato</td></tr>
+          <tr><td>Quem Somos</td><td class="muted">Equipe, escritório e registro no CRC</td></tr>
+          <tr><td>7 páginas de serviço</td><td class="muted">Abertura de empresas, contábil, fiscal, folha e RH, IRPF, IRPJ e regularização</td></tr>
+          <tr><td>Blog</td><td class="muted">Estrutura pronta, com o primeiro artigo publicado</td></tr>
+          <tr><td>Fale Conosco</td><td class="muted">Formulário, WhatsApp, mapa e endereço</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="spec">
+          <tr><th colspan="2">Técnica e SEO</th></tr>
+          <tr><td>Tecnologia atual</td><td class="muted">Next.js e Tailwind: site rápido, sem plugins que quebram com o tempo</td></tr>
+          <tr><td>SEO local</td><td class="muted">Títulos, descrições, dados estruturados e sitemap para o Google</td></tr>
+          <tr><td>HTTPS e domínio</td><td class="muted">Configuração completa e migração do site antigo</td></tr>
+          <tr><td>Métricas</td><td class="muted">Google Analytics e Search Console configurados</td></tr>
+          <tr><td>LGPD</td><td class="muted">Aviso de cookies e política de privacidade</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="mono">lucascoelhoux.site</span>
+    <span class="mono">05</span>
+  </div>
+</section>
+
+<!-- 06 · CRONOGRAMA -->
+<section class="slide alt">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(06) — Cronograma</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(06) — Tempo de trabalho</span>
+    <h2 class="display big">Do aceite ao ar em<br><em>2 a 3 semanas</em></h2>
+    <div style="margin-top:8mm;">
+      <div class="phase">
+        <span class="wk">Semana 1</span>
+        <div>
+          <h4>Alinhamento, conteúdo e design</h4>
+          <p>Reunião inicial, organização dos textos de serviços, direção visual aplicada à marca da Status e aprovação do layout da home.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="wk">Semana 2</span>
+        <div>
+          <h4>Desenvolvimento</h4>
+          <p>Construção de todas as páginas, formulário e WhatsApp funcionando, SEO aplicado e uma versão de testes para a Status revisar.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="wk">Semana 3</span>
+        <div>
+          <h4>Ajustes e publicação</h4>
+          <p>Rodada de revisão com o cliente, testes em celular e computador, configuração de domínio e HTTPS. Site no ar.</p>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:6mm;font-size:10pt;">Para cumprir o prazo de 2 semanas, preciso receber os materiais da próxima página ainda na primeira semana. Se algo atrasar, o cronograma anda junto.</p>
+  </div>
+  <div class="footer">
+    <span class="mono">lucascoelhoux.site</span>
+    <span class="mono">06</span>
+  </div>
+</section>
+
+<!-- 07 · MATERIAIS -->
+<section class="slide">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(07) — Materiais</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(07) — O que preciso receber</span>
+    <h2 class="display big">Checklist de <em>materiais</em></h2>
+    <div class="cols" style="margin-top:8mm;">
+      <ul class="clean check">
+        <li><span class="box">✓</span><span>Logo em boa resolução (PNG ou SVG, fundo transparente). Se não houver, posso propor uma reformulação simples.</span></li>
+        <li><span class="box">✓</span><span>Fotos reais do escritório e da equipe. Posso orientar um mini ensaio feito com o próprio celular.</span></li>
+        <li><span class="box">✓</span><span>Dados oficiais: razão social, número do CRC, endereço, telefones e o e-mail definitivo de contato.</span></li>
+        <li><span class="box">✓</span><span>O número de WhatsApp que vai receber os contatos do site.</span></li>
+      </ul>
+      <ul class="clean check">
+        <li><span class="box">✓</span><span>Acessos ao painel do domínio (registro.br ou similar) e à hospedagem atual.</span></li>
+        <li><span class="box">✓</span><span>Links dos perfis sociais, se existirem. Se não existirem, eu crio.</span></li>
+        <li><span class="box">✓</span><span>Dois ou três depoimentos de clientes, com nome e empresa, para dar prova social ao site.</span></li>
+        <li><span class="box">✓</span><span>Textos não são um problema: o conteúdo de serviços do site atual será aproveitado e reescrito por mim.</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="mono">lucascoelhoux.site</span>
+    <span class="mono">07</span>
+  </div>
+</section>
+
+<!-- 08 · INVESTIMENTO -->
+<section class="slide alt">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(08) — Investimento</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(08) — Investimento</span>
+    <h2 class="display big">Um valor, <em>tudo incluído</em></h2>
+    <div class="price-row" style="margin-top:8mm;">
+      <div class="price-card featured">
+        <span class="tag-feature">Melhor condição</span>
+        <span class="eyebrow" style="margin-bottom:2mm;">À vista</span>
+        <div class="display value">R$ 2.000</div>
+        <p class="muted" style="font-size:10.5pt;line-height:1.5;">Pagamento único no início do projeto. Site completo no ar em 2 a 3 semanas, com tudo do escopo incluído.</p>
+      </div>
+      <div class="price-card">
+        <span class="eyebrow" style="margin-bottom:2mm;">Parcelado</span>
+        <div class="display value">R$ 2.200</div>
+        <p class="muted" style="font-size:10.5pt;line-height:1.5;">Em 2 vezes de R$ 1.100: a primeira no aceite e a segunda na entrega do site publicado.</p>
+      </div>
+    </div>
+    <div style="margin-top:8mm;">
+      <table class="spec">
+        <tr><th>Incluído no valor</th><th>Não incluído</th></tr>
+        <tr>
+          <td>Design e desenvolvimento · SEO local · HTTPS · Analytics · estrutura de blog com o primeiro artigo · treinamento de uso · 30 dias de suporte após o lançamento</td>
+          <td class="muted">Registro e renovação do domínio (cerca de R$ 40 por ano) · hospedagem (a partir de R$ 0) · produção recorrente de artigos, que posso orçar à parte</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="footer">
+    <span class="mono">Proposta válida por 15 dias</span>
+    <span class="mono">08</span>
+  </div>
+</section>
+
+<!-- 09 · PRÓXIMOS PASSOS -->
+<section class="slide">
+  <div class="header">
+    <span class="mono">Lucas Coelho — Designer Digital</span>
+    <span class="mono">(09) — Próximos passos</span>
+  </div>
+  <div class="content">
+    <span class="eyebrow">(09) — Para começarmos</span>
+    <h2 class="display huge">Vamos tirar a Status<br>do <em>modo invisível?</em></h2>
+    <div class="cols-3" style="margin-top:10mm;">
+      <div class="card">
+        <span class="eyebrow" style="margin-bottom:2mm;">Passo 1</span>
+        <p>Aceite da proposta e pagamento da entrada, à vista ou a primeira parcela.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="margin-bottom:2mm;">Passo 2</span>
+        <p>Reunião de 30 minutos e envio dos materiais do checklist.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow" style="margin-bottom:2mm;">Passo 3</span>
+        <p>Em 2 a 3 semanas, o novo site da Status Contabilidade está no ar.</p>
+      </div>
+    </div>
+    <div style="margin-top:10mm;display:flex;gap:4mm;align-items:center;">
+      <span class="pill solid">Fechar projeto ↗</span>
+      <span class="mono" style="font-size:8.5pt;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);">Lucas Coelho · lucascoelhoux.site · Campinas — SP</span>
+    </div>
+  </div>
+  <div class="mega-word">Status</div>
+  <div class="footer">
+    <span class="mono">Obrigado pela atenção</span>
+    <span class="mono">09</span>
+  </div>
+</section>
+
+</body>
+</html>
