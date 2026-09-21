@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="relative overflow-hidden" style={{ background: "#FC958B" }}>
+      <section className="relative overflow-hidden" style={{ background: "#FFF0ED" }}>
         <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-20 lg:py-24 text-center">
           <Reveal>
             <h2 className="text-[clamp(2rem,4vw,3rem)] text-ink max-w-[24ch] mx-auto">
