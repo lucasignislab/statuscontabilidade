@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ImageReveal, Reveal, RevealStagger } from "@/components/motion";
 import { site, whatsappLink } from "@/data/services";
 
@@ -31,29 +32,52 @@ const values = [
 export default function QuemSomos() {
   return (
     <>
-      <section className="pt-[72px] bg-mist">
-        <div className="mx-auto max-w-[1200px] px-6 lg:px-12 py-16 lg:py-24 grid lg:grid-cols-2 gap-14 items-center">
-          <Reveal>
-            <h1 className="text-[clamp(2.25rem,4.5vw,3.5rem)] text-ink">
-              Há <em className="italic text-status-red">22 anos</em>, a contabilidade por trás das empresas de Campinas
-            </h1>
-            <p className="mt-6 text-xl text-slate leading-relaxed max-w-[52ch]">
-              A <span className="text-status-red font-semibold">Status</span> Contabilidade nasceu em Barão Geraldo e cresceu junto com os
-              negócios da região. São mais de duas décadas de trabalho contínuo ao
-              lado de comércios, clínicas e prestadores de serviço que confiam seus
-              números à nossa equipe.
-            </p>
-            <p className="mt-4 text-slate leading-relaxed max-w-[52ch]">
-              Nosso time reúne contadores e consultores especializados nas áreas
-              contábil, fiscal, trabalhista e de gestão, com supervisão técnica
-              sênior em cada entrega.
-            </p>
-          </Reveal>
-          <ImageReveal
+      <section className="relative pt-[72px]">
+        <div className="relative overflow-hidden bg-ink">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/images/escritorio.jpg"
-            alt="Escritório da Status Contabilidade em Barão Geraldo"
-            className="rounded-2xl shadow-md aspect-[4/3]"
+            alt=""
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover"
           />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/75 to-ink/35"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-[1200px] px-6 py-20 lg:px-12 lg:py-28">
+            <Reveal>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-mist/70 transition-colors hover:text-white"
+              >
+                <ArrowLeft size={15} aria-hidden />
+                Voltar para o início
+              </Link>
+              <p className="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-red-100">
+                Quem somos
+              </p>
+              <h1 className="mt-3 max-w-[18ch] text-[clamp(2.25rem,4.5vw,3.5rem)] text-white">
+                Há 22 anos, a contabilidade por trás das empresas de Campinas
+              </h1>
+              <p className="mt-6 max-w-[56ch] text-xl leading-relaxed text-mist/80">
+                A Status Contabilidade nasceu em Barão Geraldo e cresceu junto com
+                os negócios da região. São mais de duas décadas de trabalho ao lado
+                de empresas que confiam seus números à nossa equipe.
+              </p>
+              <div className="mt-9">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
+                  Falar com um contador
+                  <ArrowRight size={18} aria-hidden />
+                </a>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -63,6 +87,11 @@ export default function QuemSomos() {
             <h2 className="text-[clamp(1.9rem,3.4vw,2.6rem)] text-ink max-w-[24ch]">
               Como trabalhamos todos os dias
             </h2>
+            <p className="mt-5 max-w-[65ch] text-lg leading-relaxed text-slate">
+              Nosso time reúne contadores e consultores especializados nas áreas
+              contábil, fiscal, trabalhista e de gestão, com supervisão técnica
+              sênior em cada entrega.
+            </p>
           </Reveal>
           <RevealStagger className="mt-12 grid gap-6 sm:grid-cols-2">
             {values.map((v) => (
